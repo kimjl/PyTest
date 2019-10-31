@@ -1,10 +1,12 @@
 import logging
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s :: %(levelname)s :: %(message)s')
+# logging.basicConfig(level=logging.INFO, format='%(asctime)s :: %(levelname)s :: %(message)s')
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 def reverse(x):
 
     try:
-        logging.info('The value of x is {x}'.format(x={x}))
+        # logger.info('The value of x is {x}'.format(x={x}))
         neg = 0
 
         if x < 0:
@@ -14,13 +16,13 @@ def reverse(x):
         x = int(str(x)[::-1])
 
         if x > 2 ** 31:
-            logging.error('Out of 32 bit signed integer range, returning 0')
+            logger.error('Out of 32 bit signed integer range, returning 0')
             return 0
         if neg == 1:
             x = x * -1
         return x
     except:
-        logging.critical('Did not get correct format for x')
+        logger.critical('Did not get correct format for x')
 
 print(reverse(105))
 print(reverse(-728))
